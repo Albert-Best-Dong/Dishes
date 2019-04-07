@@ -1,21 +1,22 @@
-
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
+<base href="/dishes">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>菜品修改(根据菜品ID进行修改)</title>
+<title>添加菜品</title>
 <style type="text/css">
 
 </style>
 </head>
 <body>
 	<center>
-		<h1>根据菜品ID修改</h1>
-		<form action="<%=basePath%>/FoodUpdateServlet" method="post" enctype="multipart/form-data">
+		<h1>菜品添加</h1>
+		<form action="/dishes/add" method="post" enctype="multipart/form-data">
 			<table border="1px" width="400px" cellspacing="0px" cellpadding="0px">
 				<tr>
-					<td>修改ID</td>
+					<td>菜品&nbsp;ID</td>
 					<td><input type="text" name="id"></td>
 				</tr>
 				<tr>
@@ -47,7 +48,7 @@
 				</tr>
 				<tr   style="text-align:center;width:20px">
 					<td colspan="2">
-						<input type="submit" value="修改">
+						<input type="submit" value="添加">
 						<input type="reset" value="重置">
 					</td>
 				</tr>

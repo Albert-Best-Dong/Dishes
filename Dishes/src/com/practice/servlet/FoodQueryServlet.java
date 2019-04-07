@@ -7,34 +7,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.practice.dao.impl.FoodDaoImpl;
+import com.practice.domain.Food;
+
 /**
  * Servlet implementation class FoodServlet
  */
-@WebServlet("/foodservice")
+@WebServlet("/foodselect")
 public class FoodQueryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+ 
     public FoodQueryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String foodName = request.getParameter("foodName");
+		FoodDaoImpl foodDao = new FoodDaoImpl();
+		
+		Food f = foodDao.getFoodByName(foodName);
+		request.setAttribute("food", f);
+		if(f == null) {
+			request.setAttribute("msg", "还没有这道美味");
+			request.getRequestDispatcher("/selectFoodByName.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("/showFoodList.jsp").forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
 

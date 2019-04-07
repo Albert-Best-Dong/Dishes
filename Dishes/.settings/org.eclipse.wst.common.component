@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Dishes">
+    <wb-module deploy-name="dishes">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Dishes"/>
-        <property name="java-output-path" value="/Dishes/build/classes"/>
+        <property name="java-output-path" value="/dishes/build/classes"/>
+        <property name="context-root" value="dishes"/>
     </wb-module>
 </project-modules>
