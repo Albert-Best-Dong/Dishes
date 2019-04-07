@@ -40,10 +40,13 @@
 						tempList.add(selectFood);
 					}
 					for(Food f: tempList){
-					    int idx = f.getFoodImage().lastIndexOf("\\");
-						// 获得文件上传的唯一文件名：
-						String fileName = f.getFoodImage().substring(idx+1);
-	
+						String fileName = null;
+						if(f.getFoodImage() != null){
+							int idx = f.getFoodImage().lastIndexOf("\\");
+							// 获得文件上传的唯一文件名：
+							fileName = f.getFoodImage().substring(idx+1);
+						}
+					    
 				%>
 				<tr>
 					<td><%=f.getId() %></td>

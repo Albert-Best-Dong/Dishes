@@ -24,12 +24,12 @@ import com.practice.domain.Food;
 import com.practice.utils.UploadUtils;
 
 /**
- * Servlet implementation class FoodAddServlet
+ * 新增菜单Servlet
  */
 @WebServlet("/add")
 public class FoodAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private FoodDaoImpl foodDao = new FoodDaoImpl();
+	private FoodDaoImpl foodDao = new FoodDaoImpl();	//FoodDaoImpl实体
 	public FoodAddServlet() {
 		super();
 	}
@@ -37,7 +37,7 @@ public class FoodAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-
+		//套用老师的代码，自己再进行修改
 		try {
 			Map<String, String> map = new HashMap<String, String>();
 			DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
@@ -116,7 +116,7 @@ public class FoodAddServlet extends HttpServlet {
 				System.out.println(f);
 			}
 			this.getServletContext().setAttribute("list", FoodDaoImpl.getDb());
-			// 注册成功，跳转到登录页面:
+			// 添加成功，转到菜单列表
 			
 			response.sendRedirect(request.getContextPath() + "/showFoodList.jsp");
 

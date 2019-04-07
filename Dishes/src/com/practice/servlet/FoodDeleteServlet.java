@@ -11,7 +11,7 @@ import com.practice.dao.impl.FoodDaoImpl;
 import com.practice.domain.Food;
 
 /**
- * Servlet implementation class FoodDeleteServlet
+ * 删除菜单Servlet
  */
 @WebServlet("/delete")
 public class FoodDeleteServlet extends HttpServlet {

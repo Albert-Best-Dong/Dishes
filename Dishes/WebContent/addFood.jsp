@@ -13,6 +13,13 @@
 <body>
 	<center>
 		<h1>菜品添加</h1>
+		<%
+			String msg = "";
+			if (request.getAttribute("msg") != null) {
+				msg = (String) request.getAttribute("msg");
+			}
+		%>
+		<h3><font color="red"><%=msg %></font></h3>
 		<form action="/dishes/add" method="post" enctype="multipart/form-data">
 			<table border="1px" width="400px" cellspacing="0px" cellpadding="0px">
 				<tr>

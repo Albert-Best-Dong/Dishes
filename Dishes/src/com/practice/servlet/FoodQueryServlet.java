@@ -11,7 +11,7 @@ import com.practice.dao.impl.FoodDaoImpl;
 import com.practice.domain.Food;
 
 /**
- * Servlet implementation class FoodServlet
+ * 查询Servlet
  */
 @WebServlet("/foodselect")
 public class FoodQueryServlet extends HttpServlet {

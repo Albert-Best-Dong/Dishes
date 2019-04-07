@@ -17,31 +17,33 @@ import com.practice.dao.FoodDao;
 import com.practice.domain.Food;
 import com.practice.utils.UploadUtils;
 
-public class FoodDaoImpl implements FoodDao{
-	
-	private static final List<Food> db = new ArrayList<Food>();
-	
-	
+public class FoodDaoImpl implements FoodDao {
+
+	private static final List<Food> db = new ArrayList<Food>(); // 存放菜品信息的List
+
 	public static List<Food> getDb() {
 		return db;
 	}
 
 	@Override
+	// 添加菜品
 	public void addFood(Food food) {
 		FoodDaoImpl.getDb().add(food);
 	}
 
 	@Override
+	// 返回所有菜谱
 	public List<Food> getAllFood() {
-		
+
 		return db;
 	}
 
 	@Override
+	// 通过菜名进行查找
 	public Food getFoodByName(String foodName) {
 		Food food = null;
-		for(Food f : FoodDaoImpl.getDb()) {
-			if(f.getFoodName().equals(foodName)) {
+		for (Food f : FoodDaoImpl.getDb()) {
+			if (f.getFoodName().equals(foodName)) {
 				food = f;
 			}
 		}
@@ -49,32 +51,38 @@ public class FoodDaoImpl implements FoodDao{
 	}
 
 	@Override
+	// 通过id进行查找
 	public Food getFoodById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Food food = null;
+		for (Food f : FoodDaoImpl.getDb()) {
+			if (f.getId().equals(id)) {
+				food = f;
+				break;
+			}
+		}
+		return food;
 	}
 
 	@Override
+	// 修改菜品
 	public void updateFood(Food newFood) {
-		for(Food f : FoodDaoImpl.getDb()) {
-			if(newFood.getId().equals(f.getFoodName())) {
+		for (Food f : FoodDaoImpl.getDb()) {
+			if (newFood.getId().equals(f.getId())) {
+				FoodDaoImpl.getDb().remove(f);
 				FoodDaoImpl.getDb().add(newFood);
-			}else {
+				break;
+			} else {
 				return;
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void deleteFoodById(String id) {
-		for(Food f: FoodDaoImpl.getDb()) {
-			if(f.getId().equals(id)) {
-				FoodDaoImpl.getDb().remove(f);			
-				break;
-			}
+		if (getFoodById(id) != null) {
+			FoodDaoImpl.getDb().remove(getFoodById(id));
 		}
-		
 	}
 
 }

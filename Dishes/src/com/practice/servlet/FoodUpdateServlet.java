@@ -24,7 +24,7 @@ import com.practice.domain.Food;
 import com.practice.utils.UploadUtils;
 
 /**
- * Servlet implementation class FoodAlterServlet
+ * 修改Servlet
  */
 @WebServlet("/update")
 public class FoodUpdateServlet extends HttpServlet {
@@ -102,31 +102,27 @@ public class FoodUpdateServlet extends HttpServlet {
 				}
 
 				updateId = map.get("id");
-				//修改菜品信息
+				// 修改菜品信息
 				for (Food f : FoodDaoImpl.getDb()) {
-					if (f.getId().equals(updateId)) {
-						FoodDaoImpl.getDb().remove(f);
-						// 封装数据到Food当中:
-						Food food = new Food();
-						food.setFoodName(map.get("foodName"));
-						food.setTaste(map.get("taste"));
-						food.setId(map.get("id"));
-						food.setPrice(map.get("price"));
-						food.setFoodImage(url);
 
-						// 将注册用户的信息存入到List集合中:
-						foodDao.updateFood(food);
-//						FoodDaoImpl.getDb().add(food);
-//						foodList.add(food);
-						List<Food> fdb = FoodDaoImpl.getDb();
-						for (Food foo : fdb) {
-							System.out.println(foo);
-						}
-						this.getServletContext().setAttribute("list", FoodDaoImpl.getDb());
-						// 注册成功，跳转到登录页面:
-						request.getSession().setAttribute("foodName", food.getFoodName());
-						response.sendRedirect(request.getContextPath() + "/showFoodList.jsp");
+					// 封装数据到Food当中:
+					Food food = new Food();
+					food.setFoodName(map.get("foodName"));
+					food.setTaste(map.get("taste"));
+					food.setId(map.get("id"));
+					food.setPrice(map.get("price"));
+					food.setFoodImage(url);
+
+					// 将注册用户的信息存入到List集合中:
+					foodDao.updateFood(food);
+
+					for (Food foo : FoodDaoImpl.getDb()) {
+						System.out.println(foo);
 					}
+					this.getServletContext().setAttribute("list", FoodDaoImpl.getDb());
+					
+					request.getRequestDispatcher("/showFoodList.jsp").forward(request, response);
+//					response.sendRedirect(request.getContextPath() + "/showFoodList.jsp");
 				}
 
 			} catch (FileUploadException e) {
